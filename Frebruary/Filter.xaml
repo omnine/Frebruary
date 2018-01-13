@@ -22,7 +22,7 @@
         <CheckBox Content="processId" HorizontalAlignment="Left" Margin="10,295,0,0" VerticalAlignment="Top" Name="processIdCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
         <TextBox Height="23" Margin="110,0,10,152" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Name="processIdTextBox"/>
         <CheckBox Content="authType" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Name="authTypeCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
-        <Button Content="Apply" Margin="309,0,10,25" Height="21" VerticalAlignment="Bottom"/>
+        <Button Content="Apply" Margin="309,0,10,25" Height="21" VerticalAlignment="Bottom" Click="Button_Click"/>
         <Button Content="Clear" Margin="214,0,105,25" Height="21" VerticalAlignment="Bottom"/>
         <ComboBox Margin="110,0,10,396" VerticalAlignment="Bottom" Name="siteIdComboBox"/>
         <ComboBox Margin="110,0,10,325" VerticalAlignment="Bottom" Name="appPoolIdComboBox"/>

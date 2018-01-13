@@ -27,7 +27,7 @@ namespace Frebruary
     {
 
         Previewer pre;
-        private List<Freb> source;
+        public List<Freb> source;
 
         public MainWindow()
         {
@@ -154,10 +154,15 @@ namespace Frebruary
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Filter fil = new Filter(source);
+            Filter fil = new Filter(this);
             fil.ShowInTaskbar = false;
             fil.Owner = this;
             fil.ShowDialog();
+        }
+
+        public void reload()
+        {
+            DataGrid.ItemsSource = source;
         }
     }
 }

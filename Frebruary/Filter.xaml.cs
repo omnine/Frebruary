@@ -20,10 +20,13 @@ namespace Frebruary
     public partial class Filter : Window
     {
         List<Freb> originalSource;
-        public Filter(List<Freb> source)
+        MainWindow _parent;
+
+        public Filter(MainWindow form)
         {
             InitializeComponent();
-            originalSource = source;
+            originalSource = form.source;
+            _parent = form;
             populateComboBox();
             disabler();
         }
@@ -81,6 +84,39 @@ namespace Frebruary
             if (processIdCheckBox.IsChecked == true) { processIdTextBox.IsEnabled = true; } else { processIdTextBox.IsEnabled = false; }
             if (authTypeCheckBox.IsChecked == true) { authTypeComboBox.IsEnabled = true; } else { authTypeComboBox.IsEnabled = false; }
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            /* Apply Filter */
+            string siteVal = "" , urlVal = "", appVal = "", verbVal = "", statusVal = "", errorVal = "", timeVal = "", processVal = "", authVal = "";
+
+            if (siteIdCheckBox.IsChecked == true) { siteVal = siteIdComboBox.Text; }
+            if (urlCheckBox.IsChecked == true) { urlVal = urlTextBox.Text; }
+            if (appPoolIdCheckBox.IsChecked == true) { appVal = appPoolIdComboBox.Text; }
+            if (verbCheckBox.IsChecked == true) { verbVal = verbComboBox.Text; }
+            if (statusCodeCheckBox.IsChecked == true) { statusVal = statusTextBox.Text; }
+            if (errorCodeCheckBox.IsChecked == true) { errorVal = errorCodeTextBox.Text; }
+            if (timeTakenCheckBox.IsChecked == true) { timeVal = timeTakenTextBox.Text; }
+            if (processIdCheckBox.IsChecked == true) { processVal = processIdTextBox.Text; }
+            if (authTypeCheckBox.IsChecked == true) { authVal = authTypeComboBox.Text; }
+
+            var results = originalSource.Where( x =>
+                 (siteVal == "" ? true : x.siteId == siteVal)    &&
+                 (urlVal == "" ? true : x.url == urlVal)       &&
+                 (appVal == "" ? true : x.appPoolId == appVal)   &&
+                 (verbVal == "" ? true : x.verb == verbVal)     &&
+                 (statusVal == "" ? true : x.statusCode == statusVal)   &&
+                 (errorVal == "" ? true : x.errorCode == errorVal)    &&
+                 (timeVal == "" ? true : x.timeTaken == timeVal)      &&
+                 (processVal == "" ? true : x.processId == processVal)  &&
+                 (authVal == "" ? true : x.authenticationType == authVal) 
+                ).ToList<Freb>();
+
+            /* Update the Main Window Source */
+            _parent.source = results;
+            _parent.reload();
+            this.Hide();
         }
     }
 }
