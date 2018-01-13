@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Frebruary
 {
-    class Freb
+    public class Freb
     {
-
-        
-
             public string siteId { get; set; }
             public string path { get; set; }
             public string url { get; set; }
@@ -22,7 +19,5 @@ namespace Frebruary
             public string processId { get; set; }
             public string authenticationType { get; set; }
             public string failureReason { get; set; }
-        
-
     }
 }

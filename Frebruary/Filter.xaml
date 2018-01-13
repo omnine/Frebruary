@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Frebruary"
         mc:Ignorable="d"
-        Title="Window1" Height="300" Width="300">
+        Title="Filters" Height="505.042" Width="400" ResizeMode="NoResize">
     <Grid>
-        
+        <Label Content="Choose your AND filters" Margin="10,10,246,0" VerticalAlignment="Top"/>
+        <CheckBox Content="siteId" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Name="siteIdCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <CheckBox Content="url" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Name="urlCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <TextBox Height="23" Margin="110,0,10,361" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Name="urlTextBox" />
+        <CheckBox Content="appPoolId" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Name="appPoolIdCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <CheckBox Content="verb" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Name="verbCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <CheckBox Content="statusCode" HorizontalAlignment="Left" Margin="10,188,0,0" VerticalAlignment="Top" Name="statusCodeCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <TextBox Height="23" Margin="110,0,10,259" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Name="statusTextBox"/>
+        <CheckBox Content="errorCode" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top" Name="errorCodeCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <TextBox Height="23" Margin="110,0,10,224" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Name="errorCodeTextBox"/>
+        <CheckBox Content="timeTaken" HorizontalAlignment="Left" Margin="10,258,0,0" VerticalAlignment="Top" Name="timeTakenCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <TextBox Height="23" Margin="110,0,10,189" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Name="timeTakenTextBox"/>
+        <CheckBox Content="processId" HorizontalAlignment="Left" Margin="10,295,0,0" VerticalAlignment="Top" Name="processIdCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <TextBox Height="23" Margin="110,0,10,152" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Name="processIdTextBox"/>
+        <CheckBox Content="authType" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Name="authTypeCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <Button Content="Apply" Margin="309,0,10,25" Height="21" VerticalAlignment="Bottom"/>
+        <Button Content="Clear" Margin="214,0,105,25" Height="21" VerticalAlignment="Bottom"/>
+        <ComboBox Margin="110,0,10,396" VerticalAlignment="Bottom" Name="siteIdComboBox"/>
+        <ComboBox Margin="110,0,10,325" VerticalAlignment="Bottom" Name="appPoolIdComboBox"/>
+        <ComboBox Margin="110,0,10,293" VerticalAlignment="Bottom" Name="verbComboBox"/>
+        <ComboBox Margin="110,0,10,116" Name="authTypeComboBox" Height="22" VerticalAlignment="Bottom"/>
+
     </Grid>
 </Window>

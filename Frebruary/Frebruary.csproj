@@ -65,7 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Freb.cs" />
     <Compile Include="Previewer.xaml.cs">
       <DependentUpon>Previewer.xaml</DependentUpon>
     </Compile>

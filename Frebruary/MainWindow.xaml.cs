@@ -117,6 +117,11 @@ namespace Frebruary
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var row = (Freb)DataGrid.SelectedItem;
+            if(row == null)
+            {
+                MessageBox.Show("Click on a Freb to load the previewer");
+                return;
+            }
             string path = row.path;
             if(pre==null)
             {
@@ -143,14 +148,16 @@ namespace Frebruary
                 // If already open, bring to focus
                 pre.path = path;
                 pre.reloader();
-                pre.Activate();
             }
 
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            //Filter(source);
+            Filter fil = new Filter(source);
+            fil.ShowInTaskbar = false;
+            fil.Owner = this;
+            fil.ShowDialog();
         }
     }
 }
