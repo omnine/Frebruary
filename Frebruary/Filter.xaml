@@ -9,10 +9,13 @@
     <Grid>
         <Label Content="Choose your AND filters" Margin="10,10,246,0" VerticalAlignment="Top"/>
         <CheckBox Content="siteId" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Name="siteIdCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <ComboBox Margin="110,0,10,396" VerticalAlignment="Bottom" Name="siteIdComboBox" IsEditable="True" />
         <CheckBox Content="url" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Name="urlCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
         <TextBox Height="23" Margin="110,0,10,361" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Name="urlTextBox" />
         <CheckBox Content="appPoolId" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Name="appPoolIdCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <ComboBox Margin="110,0,10,325" VerticalAlignment="Bottom" Name="appPoolIdComboBox" IsEditable="True"/>
         <CheckBox Content="verb" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Name="verbCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        <ComboBox Margin="110,0,10,293" VerticalAlignment="Bottom" Name="verbComboBox" IsEditable="True"/>
         <CheckBox Content="statusCode" HorizontalAlignment="Left" Margin="10,188,0,0" VerticalAlignment="Top" Name="statusCodeCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
         <TextBox Height="23" Margin="110,0,10,259" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Name="statusTextBox"/>
         <CheckBox Content="errorCode" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top" Name="errorCodeCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
@@ -22,12 +25,14 @@
         <CheckBox Content="processId" HorizontalAlignment="Left" Margin="10,295,0,0" VerticalAlignment="Top" Name="processIdCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
         <TextBox Height="23" Margin="110,0,10,152" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Name="processIdTextBox"/>
         <CheckBox Content="authType" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Name="authTypeCheckBox" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
-        <Button Content="Apply" Margin="309,0,10,25" Height="21" VerticalAlignment="Bottom" Click="Button_Click"/>
-        <Button Content="Clear" Margin="214,0,105,25" Height="21" VerticalAlignment="Bottom"/>
-        <ComboBox Margin="110,0,10,396" VerticalAlignment="Bottom" Name="siteIdComboBox"/>
-        <ComboBox Margin="110,0,10,325" VerticalAlignment="Bottom" Name="appPoolIdComboBox"/>
-        <ComboBox Margin="110,0,10,293" VerticalAlignment="Bottom" Name="verbComboBox"/>
-        <ComboBox Margin="110,0,10,116" Name="authTypeComboBox" Height="22" VerticalAlignment="Bottom"/>
+        <ComboBox Margin="110,0,10,116" Name="authTypeComboBox" Height="22" VerticalAlignment="Bottom" IsEditable="True"/>
+        
+        <Button Content="Apply" Margin="309,0,10,10" Height="21" VerticalAlignment="Bottom" Click="Button_Click"/>
+        <Button Content="Clear" Margin="229,0,90,10" Height="21" VerticalAlignment="Bottom" Click="Button_Click_1"/>
+        
+        <GroupBox Header="Tip" HorizontalAlignment="Left" Height="49" Margin="10,376,0,0" VerticalAlignment="Top" Width="374">
+            <Label Content="After applying filter, unchecking it won't work. Clear filter instead." HorizontalAlignment="Left" Height="28" Margin="0,0,-2,-1" VerticalAlignment="Top" Width="364"/>
+        </GroupBox>
 
     </Grid>
 </Window>

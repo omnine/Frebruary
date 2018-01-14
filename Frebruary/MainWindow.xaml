@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Frebruary"
         mc:Ignorable="d"
-        Title="Frebruary v2" Height="500" Width="830" MinWidth="830" MinHeight="500">
+        Title="Frebruary v2" Height="500" Width="830" MinWidth="830" MinHeight="500" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="69*"/>
@@ -17,7 +17,7 @@
         <Button Content="Scan" Margin="99.353,13,0,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="75" Grid.Column="1" Name="scanButton" Click="scanButton_Click" />
         <Button Content="Filters" Margin="193.353,13,0,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="75" Grid.Column="1" Click="Button_Click_2"/>
         <Button Content="Preview >>" Margin="0,13,10,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Right" Width="75" Grid.Column="1" Click="Button_Click_1"/>
-        <Button Content="?" Margin="0,13,90,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Right" Width="26" Grid.Column="1"/>
+        <Button Content="?" Margin="0,13,90,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Right" Width="26" Grid.Column="1" Click="Button_Click_3"/>
         <DataGrid Margin="10,49,10,10" Grid.ColumnSpan="2" Name="DataGrid" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged"  />
 
     </Grid>

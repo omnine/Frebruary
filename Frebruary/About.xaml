@@ -1,0 +1,65 @@
+﻿<Window x:Class="Frebruary.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Frebruary"
+        mc:Ignorable="d"
+        Title="About" Height="471.428" Width="468.067" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="184,10,0,0" TextWrapping="Wrap" Text="FREBruary v2" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Grid.ColumnSpan="2" Height="21" Width="100"/>
+        <TextBlock HorizontalAlignment="Left" Margin="72,45,0,0" TextWrapping="Wrap" Text="A simple Failed Request Tracing Viewer and Filtering Tool." VerticalAlignment="Top" RenderTransformOrigin="0.002,-1.118" Height="44" Width="315" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="91,89,0,0" TextWrapping="Wrap" Text="For reporting bugs and feature requests, contact:
+                   
+                   
+                   
+                   Abhilash Rejanair ( abrejana@microsoft.com) "
+                   VerticalAlignment="Top" Width="281" Grid.ColumnSpan="2" Height="32"/>
+        <GroupBox Header="Changelog" Height="245" Margin="10,134,10,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <TextBlock Margin="10,10,6,0" TextWrapping="Wrap" Text="-- Filters use *AND* condition now. However, this means multiple conditions for the same filter (seperated by ; ) is no longer supported.
+                       
+                       -- UI is more consistent + UI Bug Fixes 
+                       
+                       
+                       -- Better exception handling
+                       
+                       
+                       
+                       -- Clearer dialog messages and tips
+                       
+                       
+                       -- Filter config file is in XML for better editing
+                       
+                       
+                       -- Added extra fields
+                       
+                       
+                       
+                       -- Filtering can be done with error code
+                       
+                       
+                       
+                       -- Combo Box for a few filters, which are auto populated
+                       
+                       
+                       -- Open Sourced the code
+                       
+                       
+                       
+                       > TO DO:
+                       
+                       
+                       
+                       
+                       -- Add support for multiple conditions for the same filter
+                       
+                       "/>
+        </GroupBox>
+        <Button Content="Close" Margin="202,0,201,10" Click="Button_Click" Grid.ColumnSpan="2" Height="20" VerticalAlignment="Bottom"/>
+
+    </Grid>
+</Window>

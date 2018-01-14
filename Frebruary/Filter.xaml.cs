@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace Frebruary
 {
@@ -29,23 +31,9 @@ namespace Frebruary
             _parent = form;
             populateComboBox();
             disabler();
+            loadPreviousValues();
         }
 
-        public List<string> distinct(List<string> param)
-        {
-            List<string> result = null;
-            param.ForEach(x =>
-            {
-                if (result.Contains(x))
-                {
-
-                } else
-                {
-                    result.Add(x);
-                }
-            });
-            return result;
-        }
 
         public void populateComboBox()
         {
@@ -71,9 +59,68 @@ namespace Frebruary
             disabler();
         }
         
+        public void loadPreviousValues()
+        {
+            if (File.Exists("filter.xml"))
+            {
+                /* We must first populate comboBox, else those values wont be retained */ 
+                string xmlStr = System.IO.File.ReadAllText(@"filter.xml"); ;
+                using (XmlReader reader = XmlReader.Create(new StringReader(xmlStr)))
+                {
+                    while (reader.Read())
+                    {
+                        // Only detect start elements.
+                        if (reader.IsStartElement())
+                        {
+                            // Get element name and switch on it.
+                            switch (reader.Name)
+                            {
+                                case "siteId":
+                                    siteIdCheckBox.IsChecked = true;
+                                    siteIdComboBox.Text = reader["value"];
+                                    break;
+                                case "url":
+                                    urlCheckBox.IsChecked = true;
+                                    urlTextBox.Text = reader["value"];
+                                    break;
+                                case "appPoolId":
+                                    appPoolIdCheckBox.IsChecked = true;
+                                    appPoolIdComboBox.Text = reader["value"];
+                                    break;
+                                case "verb":
+                                    verbCheckBox.IsChecked = true;
+                                    verbComboBox.Text = reader["value"];
+                                    break;
+                                case "statusCode":
+                                    statusCodeCheckBox.IsChecked = true;
+                                    statusTextBox.Text = reader["value"];
+                                    break;
+                                case "errorCode":
+                                    errorCodeCheckBox.IsChecked = true;
+                                    errorCodeTextBox.Text = reader["value"];
+                                    break;
+                                case "timeTaken":
+                                    timeTakenCheckBox.IsChecked = true;
+                                    timeTakenTextBox.Text = reader["value"];
+                                    break;
+                                case "processId":
+                                    processIdCheckBox.IsChecked = true;
+                                    processIdTextBox.Text = reader["value"];
+                                    break;
+                                case "authenticationType":
+                                    authTypeCheckBox.IsChecked = true;
+                                    authTypeComboBox.Text = reader["value"];
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         public void disabler()
         {
+
             if (siteIdCheckBox.IsChecked == true) { siteIdComboBox.IsEnabled = true; } else { siteIdComboBox.IsEnabled = false; }
             if (urlCheckBox.IsChecked == true) { urlTextBox.IsEnabled = true; } else { urlTextBox.IsEnabled = false; }
             if (appPoolIdCheckBox.IsChecked == true) { appPoolIdComboBox.IsEnabled = true; } else { appPoolIdComboBox.IsEnabled = false; }
@@ -113,9 +160,40 @@ namespace Frebruary
                  (authVal == "" ? true : x.authenticationType == authVal) 
                 ).ToList<Freb>();
 
+            /* Save these settings to a file */
+            using (XmlWriter writer = XmlWriter.Create("filter.xml"))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("filterSettings");
+
+                if (siteIdCheckBox.IsChecked == true) { writer.WriteStartElement("siteId"); writer.WriteAttributeString("value", siteVal); writer.WriteEndElement(); }
+                if (urlCheckBox.IsChecked == true) { writer.WriteStartElement("url"); writer.WriteAttributeString("value", urlVal); writer.WriteEndElement(); }
+                if (appPoolIdCheckBox.IsChecked == true) { writer.WriteStartElement("appPoolId"); writer.WriteAttributeString("value", appVal); writer.WriteEndElement(); }
+                if (verbCheckBox.IsChecked == true) { writer.WriteStartElement("verb"); writer.WriteAttributeString("value", verbVal); writer.WriteEndElement(); }
+                if (statusCodeCheckBox.IsChecked == true) { writer.WriteStartElement("statusCode"); writer.WriteAttributeString("value", statusVal); writer.WriteEndElement(); }
+                if (errorCodeCheckBox.IsChecked == true) { writer.WriteStartElement("errorCode"); writer.WriteAttributeString("value", errorVal); writer.WriteEndElement(); }
+                if (timeTakenCheckBox.IsChecked == true) { writer.WriteStartElement("timeTaken"); writer.WriteAttributeString("value", timeVal); writer.WriteEndElement(); }
+                if (processIdCheckBox.IsChecked == true) { writer.WriteStartElement("processId"); writer.WriteAttributeString("value", processVal); writer.WriteEndElement(); }
+                if (authTypeCheckBox.IsChecked == true) { writer.WriteStartElement("authenticationType"); writer.WriteAttributeString("value", authVal); writer.WriteEndElement(); }
+
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+            }
+
             /* Update the Main Window Source */
             _parent.source = results;
             _parent.reload();
+            this.Hide();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists(@"filter.xml"))
+            {
+                File.Delete(@"filter.xml");
+            }
+            MessageBox.Show("Removing all applied filters");
+            _parent.scanButton_Click(sender, e);
             this.Hide();
         }
     }

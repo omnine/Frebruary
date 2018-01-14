@@ -60,16 +60,22 @@ namespace Frebruary
 
         }
 
-        private void scanButton_Click(object sender, RoutedEventArgs e)
+        public void scanButton_Click(object sender, RoutedEventArgs e)
         {
-            string location = locationTextBox.Text;
-            var ext = new List<string> { ".xml" };
-            var myFiles = Directory.EnumerateFiles(location, "*.*", SearchOption.AllDirectories)
-                 .Where(s => ext.Contains(System.IO.Path.GetExtension(s)));
-            /* Populate */
-            List<Freb> source = processedList(myFiles);
-            DataGrid.ItemsSource = source;
-            
+            try
+            {
+                string location = locationTextBox.Text;
+                var ext = new List<string> { ".xml" };
+                var myFiles = Directory.EnumerateFiles(location, "*.*", SearchOption.AllDirectories)
+                     .Where(s => ext.Contains(System.IO.Path.GetExtension(s)));
+                /* Populate */
+                List<Freb> source = processedList(myFiles);
+                DataGrid.ItemsSource = source;
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Could not scan the directory. Is it valid? Do you have sufficient privileges?");
+            }
         }
 
         private List<Freb> processedList(IEnumerable<string> files)
@@ -138,6 +144,7 @@ namespace Frebruary
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var row = (Freb)DataGrid.SelectedItem;
+            if (row == null) return;
             string path = row.path;
             if (pre == null)
             {
@@ -154,6 +161,11 @@ namespace Frebruary
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            if(source == null)
+            {
+                MessageBox.Show("Scan and populate the Freb entries before applying a filter");
+                return;
+            }
             Filter fil = new Filter(this);
             fil.ShowInTaskbar = false;
             fil.Owner = this;
@@ -163,6 +175,20 @@ namespace Frebruary
         public void reload()
         {
             DataGrid.ItemsSource = source;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (File.Exists(@"filter.xml"))
+            {
+                File.Delete(@"filter.xml");
+            }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            About a = new About();
+            a.Show();
         }
     }
 }
