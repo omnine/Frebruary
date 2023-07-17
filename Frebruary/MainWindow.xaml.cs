@@ -252,19 +252,19 @@ namespace Frebruary
             // Load the XML source file.
             XPathDocument doc = new XPathDocument(filename);
 
-            /*
+            
             // Create an XmlWriter.
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.OmitXmlDeclaration = true;
             settings.Indent = true;
-            XmlWriter writer = XmlWriter.Create("output.xml", settings);
+            XmlWriter writer = XmlWriter.Create("D:\\temp\\output.html", settings);
 
             // Execute the transformation.
             xslt.Transform(doc, writer);
             writer.Close();
-            */
+            
 
-
+/*
 
             //Create an XmlTextWriter to output to the console.               
             XmlTextWriter writer = new XmlTextWriter(Console.Out);
@@ -273,7 +273,7 @@ namespace Frebruary
             //Transform the file.  
             xslt.Transform(doc, writer);
             writer.Close();
-
+*/
  //           About a = new About();
  //           a.Show();
         }
