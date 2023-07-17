@@ -17,9 +17,13 @@ using System.IO;
 using System.Xml;
 using System.Text.RegularExpressions;
 using System.Data;
+using System.Security.Permissions;
+using System.Xml.Xsl;
+using System.Xml.XPath;
 
 namespace Frebruary
 {
+    [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -235,8 +239,43 @@ namespace Frebruary
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            About a = new About();
-            a.Show();
+            //do own transform
+            const String filename = "D:\\temp\\freb\\fr000001.xml";
+            const String stylesheet = "D:\\temp\\freb\\freb.xsl";
+
+            // Compile the style sheet.
+            XsltSettings xslt_settings = new XsltSettings();
+            xslt_settings.EnableScript = true;
+            XslCompiledTransform xslt = new XslCompiledTransform();
+            xslt.Load(stylesheet, xslt_settings, new XmlUrlResolver());
+
+            // Load the XML source file.
+            XPathDocument doc = new XPathDocument(filename);
+
+            /*
+            // Create an XmlWriter.
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.OmitXmlDeclaration = true;
+            settings.Indent = true;
+            XmlWriter writer = XmlWriter.Create("output.xml", settings);
+
+            // Execute the transformation.
+            xslt.Transform(doc, writer);
+            writer.Close();
+            */
+
+
+
+            //Create an XmlTextWriter to output to the console.               
+            XmlTextWriter writer = new XmlTextWriter(Console.Out);
+            writer.Formatting = Formatting.Indented;
+
+            //Transform the file.  
+            xslt.Transform(doc, writer);
+            writer.Close();
+
+ //           About a = new About();
+ //           a.Show();
         }
     }
 }
