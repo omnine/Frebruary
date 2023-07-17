@@ -257,6 +257,20 @@ namespace Frebruary
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.OmitXmlDeclaration = true;
             settings.Indent = true;
+
+
+            using (var ms = new MemoryStream())
+            using (var writer = new XmlTextWriter(ms, new UTF8Encoding(false))
+            { Formatting = Formatting.Indented})
+            {
+                // Execute the transformation.
+                xslt.Transform(doc, writer);
+                string html =  Encoding.UTF8.GetString(ms.ToArray());
+                Console.Write(html);
+            }
+
+/*
+
             XmlWriter writer = XmlWriter.Create("D:\\temp\\output.html", settings);
 
             // Execute the transformation.
@@ -264,7 +278,7 @@ namespace Frebruary
             writer.Close();
             
 
-/*
+
 
             //Create an XmlTextWriter to output to the console.               
             XmlTextWriter writer = new XmlTextWriter(Console.Out);

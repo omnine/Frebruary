@@ -32,6 +32,8 @@ namespace Frebruary
             CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions("--allow-file-access-from-files");
             CoreWebView2Environment environment = await CoreWebView2Environment.CreateAsync(null, null, options);
             await browser2.EnsureCoreWebView2Async(environment);
+
+
 //            browser2.CoreWebView2.Navigate("https://yourlink.jnlp");
             browser2.Source = s;
         }
