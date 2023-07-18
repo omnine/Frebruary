@@ -32,6 +32,8 @@ namespace Frebruary
 
         bool _bUseWebView;
 
+        string _stylesheet;
+
 
         private async Task InitializeAsync(string html)
         {
@@ -51,13 +53,13 @@ namespace Frebruary
                 browser.Visibility = Visibility.Hidden;
                 browser2.Visibility = Visibility.Visible;
 
-                const String stylesheet = "D:\\temp\\freb\\freb.xsl";
+ //               const String stylesheet = "D:\\temp\\freb\\freb.xsl";
 
                 // Compile the style sheet.
                 XsltSettings xslt_settings = new XsltSettings();
                 xslt_settings.EnableScript = true;
                 XslCompiledTransform xslt = new XslCompiledTransform();
-                xslt.Load(stylesheet, xslt_settings, new XmlUrlResolver());
+                xslt.Load(_stylesheet, xslt_settings, new XmlUrlResolver());
 
                 // Load the XML source file.
                 XPathDocument doc = new XPathDocument(path);
@@ -95,7 +97,7 @@ namespace Frebruary
 
         }
 
-        public Previewer(string spath, bool bUseWebView)
+        public Previewer(string spath, bool bUseWebView, string stylesheet)
         {
             InitializeComponent();
             if (spath=="" || spath == null)
@@ -104,7 +106,7 @@ namespace Frebruary
             }
 
             _bUseWebView = bUseWebView;
-
+            _stylesheet = stylesheet;
             path = spath;
 
             doRender();

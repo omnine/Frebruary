@@ -34,6 +34,7 @@ namespace Frebruary
         Previewer pre;
         public List<Freb> source;
 
+        string appPath;
         string lastScannedFolder;
         public bool bUseWebView = true;    //use webview2 by default 
 
@@ -41,6 +42,7 @@ namespace Frebruary
         {
 
             InitializeComponent();
+            appPath = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
             //read settings
             lastScannedFolder = ConfigurationManager.AppSettings.Get("lastScannedFolder");
             Console.WriteLine("The value of lastScannedFolder: " + lastScannedFolder);
@@ -205,17 +207,25 @@ namespace Frebruary
                 System.Windows.MessageBox.Show("Click on a Freb to load the previewer");
                 return;
             }
+
+            string stylesheet = appPath + "\\freb.xsl";
+
+            if(!File.Exists(stylesheet)) {
+                System.Windows.MessageBox.Show("This xsl file doesn't exist!\r\n" + stylesheet);
+                return;
+            }
+
             string path = row.path;
             if(pre == null)
             {
-                pre = new Previewer(path, bUseWebView);
+                pre = new Previewer(path, bUseWebView, stylesheet);
                 pre.Show();
             }
             else
             {
                 if (pre.IsLoaded == false)
                 {
-                    pre = new Previewer(path, bUseWebView);
+                    pre = new Previewer(path, bUseWebView, stylesheet);
                     pre.Show();
                 }
                 else
