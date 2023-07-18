@@ -263,59 +263,10 @@ namespace Frebruary
             }
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Button_Click_About(object sender, RoutedEventArgs e)
         {
-            //do own transform
-            const String filename = "D:\\temp\\freb\\fr000001.xml";
-            const String stylesheet = "D:\\temp\\freb\\freb.xsl";
-
-            // Compile the style sheet.
-            XsltSettings xslt_settings = new XsltSettings();
-            xslt_settings.EnableScript = true;
-            XslCompiledTransform xslt = new XslCompiledTransform();
-            xslt.Load(stylesheet, xslt_settings, new XmlUrlResolver());
-
-            // Load the XML source file.
-            XPathDocument doc = new XPathDocument(filename);
-
-            
-            // Create an XmlWriter.
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.OmitXmlDeclaration = true;
-            settings.Indent = true;
-
-
-            using (var ms = new MemoryStream())
-            using (var writer = new XmlTextWriter(ms, new UTF8Encoding(false))
-            { Formatting = Formatting.Indented})
-            {
-                // Execute the transformation.
-                xslt.Transform(doc, writer);
-                string html =  Encoding.UTF8.GetString(ms.ToArray());
-                Console.Write(html);
-            }
-
-/*
-
-            XmlWriter writer = XmlWriter.Create("D:\\temp\\output.html", settings);
-
-            // Execute the transformation.
-            xslt.Transform(doc, writer);
-            writer.Close();
-            
-
-
-
-            //Create an XmlTextWriter to output to the console.               
-            XmlTextWriter writer = new XmlTextWriter(Console.Out);
-            writer.Formatting = Formatting.Indented;
-
-            //Transform the file.  
-            xslt.Transform(doc, writer);
-            writer.Close();
-*/
- //           About a = new About();
- //           a.Show();
+            About a = new About();
+            a.Show();
         }
     }
 }

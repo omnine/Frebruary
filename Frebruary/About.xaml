@@ -13,12 +13,6 @@
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Left" Margin="184,10,0,0" TextWrapping="Wrap" Text="FREBruary v2" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Grid.ColumnSpan="2" Height="21" Width="100"/>
         <TextBlock HorizontalAlignment="Left" Margin="72,45,0,0" TextWrapping="Wrap" Text="A simple Failed Request Tracing Viewer and Filtering Tool." VerticalAlignment="Top" RenderTransformOrigin="0.002,-1.118" Height="44" Width="315" Grid.ColumnSpan="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="91,89,0,0" TextWrapping="Wrap" Text="For reporting bugs and feature requests, contact:
-                   
-                   
-                   
-                   Abhilash Rejanair ( abrejana@microsoft.com) "
-                   VerticalAlignment="Top" Width="281" Grid.ColumnSpan="2" Height="32"/>
         <GroupBox Header="Changelog" Height="245" Margin="10,134,10,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <TextBlock Margin="10,10,6,0" TextWrapping="Wrap" Text="-- Filters use *AND* condition now. However, this means multiple conditions for the same filter (seperated by ; ) is no longer supported.
                        
