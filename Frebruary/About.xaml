@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Frebruary"
         mc:Ignorable="d"
-        Title="Settings" Height="471.428" Width="468.067" ResizeMode="NoResize">
+        Title="Settings" Height="353.571" Width="468.067" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

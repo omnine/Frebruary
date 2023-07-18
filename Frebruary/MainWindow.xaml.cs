@@ -211,8 +211,13 @@ namespace Frebruary
             string stylesheet = appPath + "\\freb.xsl";
 
             if(!File.Exists(stylesheet)) {
-                System.Windows.MessageBox.Show("This xsl file doesn't exist!\r\n" + stylesheet);
-                return;
+                //check further on 
+                stylesheet = lastScannedFolder + "\\freb.xsl";
+                if (!File.Exists(stylesheet))
+                {
+                    System.Windows.MessageBox.Show("This xsl file doesn't exist!\r\n" + stylesheet);
+                    return;
+                }
             }
 
             string path = row.path;
