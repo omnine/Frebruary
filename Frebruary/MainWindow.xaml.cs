@@ -20,6 +20,7 @@ using System.Data;
 using System.Security.Permissions;
 using System.Xml.Xsl;
 using System.Xml.XPath;
+using System.Configuration;
 
 namespace Frebruary
 {
@@ -33,9 +34,20 @@ namespace Frebruary
         Previewer pre;
         public List<Freb> source;
 
+        string lastScannedFolder;
+
         public MainWindow()
         {
+
             InitializeComponent();
+            //read settings
+            lastScannedFolder = ConfigurationManager.AppSettings.Get("lastScannedFolder");
+            Console.WriteLine("The value of lastScannedFolder: " + lastScannedFolder);
+            if (lastScannedFolder != null)
+            {
+                locationTextBox.Text = lastScannedFolder;
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -70,6 +82,20 @@ namespace Frebruary
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
                     locationTextBox.Text = fbroswer.SelectedPath;
+
+                    Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+                    if (lastScannedFolder != null)
+                    {
+                        configuration.AppSettings.Settings["lastScannedFolder"].Value = fbroswer.SelectedPath;
+                    }
+                    else
+                    {
+                        configuration.AppSettings.Settings.Add("lastScannedFolder", fbroswer.SelectedPath);
+                    }
+                    configuration.Save(ConfigurationSaveMode.Full, true);
+                    lastScannedFolder = fbroswer.SelectedPath;
+
                 }
 
             }
