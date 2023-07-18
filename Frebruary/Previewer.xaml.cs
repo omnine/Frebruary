@@ -15,7 +15,7 @@ namespace Frebruary
     /// Interaction logic for Window1.xaml
     /// </summary>
     /// 
-    [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
+//    [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
 
     public partial class Previewer : Window
     {

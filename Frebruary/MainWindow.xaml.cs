@@ -13,7 +13,7 @@ using System.Configuration;
 
 namespace Frebruary
 {
-    [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
+//    [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
