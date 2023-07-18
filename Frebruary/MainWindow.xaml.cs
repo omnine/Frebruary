@@ -35,6 +35,7 @@ namespace Frebruary
         public List<Freb> source;
 
         string lastScannedFolder;
+        bool bUseWebView = true;    //use webview2 by default 
 
         public MainWindow()
         {
@@ -47,7 +48,13 @@ namespace Frebruary
             {
                 locationTextBox.Text = lastScannedFolder;
             }
+            string strUWV = ConfigurationManager.AppSettings.Get("useWebView");
+            if(strUWV != null)
+            {
+                bUseWebView = Convert.ToBoolean(strUWV);
+            }
 
+            bUseWebView = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -201,14 +208,14 @@ namespace Frebruary
             string path = row.path;
             if(pre == null)
             {
-                pre = new Previewer(path, true);
+                pre = new Previewer(path, bUseWebView);
                 pre.Show();
             }
             else
             {
                 if (pre.IsLoaded == false)
                 {
-                    pre = new Previewer(path, true);
+                    pre = new Previewer(path, bUseWebView);
                     pre.Show();
                 }
                 else

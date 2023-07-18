@@ -8,9 +8,7 @@
         mc:Ignorable="d"
         Title="Previewer" Height="500" Width="800">
     <Grid>
-        <WebBrowser x:Name="browser" Margin="0,0,0,259"/>
-
-        <Wpf:WebView2 x:Name="browser2"  Margin="0,242,0,0" />
-
+        <WebBrowser x:Name="browser" Margin="0,0,0,0"/>
+        <Wpf:WebView2 x:Name="browser2"  Margin="0,0,0,0" />
     </Grid>
 </Window>
