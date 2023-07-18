@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Frebruary"
         mc:Ignorable="d"
-        Title="About" Height="471.428" Width="468.067" ResizeMode="NoResize">
+        Title="Settings" Height="471.428" Width="468.067" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -14,14 +14,15 @@
 
         <GroupBox Header="Preview the log with:" HorizontalAlignment="Left" Height="51" Margin="10,72,0,0" VerticalAlignment="Top" Width="411" Grid.ColumnSpan="2"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="184,10,0,0" TextWrapping="Wrap" Text="FREBruary v2" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Grid.ColumnSpan="2" Height="21" Width="100"/>
+        <TextBlock HorizontalAlignment="Left" Margin="178,10,0,0" TextWrapping="Wrap" Text="FREB Viewer" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Grid.ColumnSpan="2" Height="21" Width="110"/>
         <TextBlock HorizontalAlignment="Left" Margin="72,45,0,0" TextWrapping="Wrap" Text="A simple Failed Request Tracing Viewer and Filtering Tool." VerticalAlignment="Top" RenderTransformOrigin="0.002,-1.118" Height="44" Width="315" Grid.ColumnSpan="2"/>
-        <GroupBox Header="Changelog" Height="245" Margin="10,134,10,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <TextBlock Margin="10,10,6,0" TextWrapping="Wrap" Text="-- Filters use *AND* condition now. However, this means multiple conditions for the same filter (seperated by ; ) is no longer supported.                                                -- UI is more consistent + UI Bug Fixes                                                                         -- Better exception handling                                                                                                -- Clearer dialog messages and tips                                                                        -- Filter config file is in XML for better editing                                                                        -- Added extra fields                                                                                                -- Filtering can be done with error code                                                                                                -- Combo Box for a few filters, which are auto populated                                                                        -- Open Sourced the code                                                                                                &gt; TO DO:                                                                                                                        -- Add support for multiple conditions for the same filter                                                "/>
+        <GroupBox Header="Features" Height="140" Margin="10,134,10,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <TextBlock Margin="10,10,6,0" TextWrapping="Wrap" Text="-- Filters use *AND* condition now. However, this means multiple conditions for the same filter (seperated by ; ) is no longer supported.                                     -- Filter config file is in XML for better editing                                                                                                                                                                  -- Filtering can be done with error code                                                                                                -- Combo Box for a few filters, which are auto populated                                                                                                                                                                                                                                                                               " Height="122" VerticalAlignment="Top"/>
         </GroupBox>
-        <Button Content="Close" Margin="202,0,201,10" Click="Button_Click" Grid.ColumnSpan="2" Height="20" VerticalAlignment="Bottom"/>
-        <RadioButton Content="WebView (Edge)" HorizontalAlignment="Left" Margin="24,94,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <RadioButton Content="WebBrowser (Internet Explorer)" HorizontalAlignment="Left" Margin="205,94,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button Content="Save" Margin="107,0,65,10" Click="Button_Click_Save" Height="20" VerticalAlignment="Bottom"/>
+        <RadioButton x:Name="radioWebView" Content="WebView (Edge)" HorizontalAlignment="Left" Margin="24,94,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton x:Name="radioWebBrowser" Content="WebBrowser (Internet Explorer)" HorizontalAlignment="Left" Margin="205,94,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="42,0,65,10" VerticalAlignment="Bottom" Width="75" Click="Button_Click_Cancel"/>
 
     </Grid>
 </Window>

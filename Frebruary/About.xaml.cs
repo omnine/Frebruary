@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,12 +20,22 @@ namespace Frebruary
     /// </summary>
     public partial class About : Window
     {
-        public About()
+        MainWindow _parent;
+        public About(MainWindow form)
         {
             InitializeComponent();
+            _parent = form;
+            radioWebBrowser.IsChecked = !_parent.bUseWebView;
+            radioWebView.IsChecked = _parent.bUseWebView;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Save(object sender, RoutedEventArgs e)
+        {
+            _parent.bUseWebView = (bool)radioWebView.IsChecked;
+            this.Hide();
+        }
+
+        private void Button_Click_Cancel(object sender, RoutedEventArgs e)
         {
             this.Hide();
         }
