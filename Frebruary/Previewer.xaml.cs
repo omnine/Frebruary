@@ -30,6 +30,8 @@ namespace Frebruary
     {
         public string path;
 
+        bool _bUseWebView;
+
 
         private async Task InitializeAsync(string html)
         {
@@ -42,16 +44,9 @@ namespace Frebruary
 //            browser2.Source = s;
         }
 
-        public Previewer(string spath, bool bUseWebView)
+        private void doRender()
         {
-            InitializeComponent();
-            if (spath=="" || spath == null)
-            {
-                return;
-            }
-
-            path = spath;
-            if (bUseWebView)
+            if (_bUseWebView)
             {
                 browser.Visibility = Visibility.Hidden;
                 browser2.Visibility = Visibility.Visible;
@@ -65,7 +60,7 @@ namespace Frebruary
                 xslt.Load(stylesheet, xslt_settings, new XmlUrlResolver());
 
                 // Load the XML source file.
-                XPathDocument doc = new XPathDocument(spath);
+                XPathDocument doc = new XPathDocument(path);
 
 
                 // Create an XmlWriter.
@@ -94,23 +89,35 @@ namespace Frebruary
                 browser.Visibility = Visibility.Visible;
                 Uri s = new Uri(path);
                 browser.Source = s;
-                this.Title = "Previewer - " + path;
+
+            }
+            this.Title = "Previewer - " + path;
+
+        }
+
+        public Previewer(string spath, bool bUseWebView)
+        {
+            InitializeComponent();
+            if (spath=="" || spath == null)
+            {
+                return;
             }
 
+            _bUseWebView = bUseWebView;
+
+            path = spath;
+
+            doRender();
 
 
 
 
 
-          
         }
 
         public void reloader()
         {
-            Uri s = new Uri(path);
-            browser.Source = s;
-            this.Title = "Previewer - " + path;
-
+            doRender();
         }
     }
 }
