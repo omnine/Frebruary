@@ -201,14 +201,14 @@ namespace Frebruary
             string path = row.path;
             if(pre == null)
             {
-                pre = new Previewer(path);
+                pre = new Previewer(path, true);
                 pre.Show();
             }
             else
             {
                 if (pre.IsLoaded == false)
                 {
-                    pre = new Previewer(path);
+                    pre = new Previewer(path, true);
                     pre.Show();
                 }
                 else

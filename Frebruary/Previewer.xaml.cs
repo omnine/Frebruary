@@ -42,21 +42,19 @@ namespace Frebruary
 //            browser2.Source = s;
         }
 
-        public Previewer(string spath)
+        public Previewer(string spath, bool bUseWebView)
         {
             InitializeComponent();
-            Uri s;
             if (spath=="" || spath == null)
             {
-            }else
+                return;
+            }
+
+            path = spath;
+            if (bUseWebView)
             {
-                path = spath;
-                s = new Uri(path);
-                browser.Source = s;
-                this.Title = "Previewer - "+path;
-
-                //               _ = InitializeAsync(s);
-
+                browser.Visibility = Visibility.Hidden;
+                browser2.Visibility = Visibility.Visible;
 
                 const String stylesheet = "D:\\temp\\freb\\freb.xsl";
 
@@ -84,13 +82,27 @@ namespace Frebruary
                     xslt.Transform(doc, writer);
                     string html = Encoding.UTF8.GetString(ms.ToArray());
                     _ = InitializeAsync(html);
- //                   browser2.NavigateToString(html);
- //                   Console.Write(html);
+                    //                   browser2.NavigateToString(html);
+                    //                   Console.Write(html);
                 }
 
 
-
             }
+            else
+            {
+                browser2.Visibility = Visibility.Hidden;
+                browser.Visibility = Visibility.Visible;
+                Uri s = new Uri(path);
+                browser.Source = s;
+                this.Title = "Previewer - " + path;
+            }
+
+
+
+
+
+
+          
         }
 
         public void reloader()
