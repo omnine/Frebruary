@@ -11,6 +11,7 @@ using System.Data;
 using System.Security.Permissions;
 using System.Configuration;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel;
 
 namespace Frebruary
 {
@@ -21,7 +22,7 @@ namespace Frebruary
     public partial class MainWindow : Window
     {
 
-        Previewer pre;
+        Previewer pre = null;
         public List<Freb> source;
 
         string appPath;
@@ -50,7 +51,15 @@ namespace Frebruary
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        void MainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            if(pre != null)
+            {
+                pre.Close();
+            }
+        }
+
+            private void Button_Click(object sender, RoutedEventArgs e)
         {
             /* Removed use of Windows Core API Code Pack
              * 
