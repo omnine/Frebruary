@@ -23,4 +23,7 @@ For backward compatibility, The WebBrowser (Embedded IE Control) is kept.
 - Scan the logs under that folder;
 - Choose one log in the list, then Preview it.
 
- 
+## References
+
+[Script Blocks Using msxsl:script](https://learn.microsoft.com/en-us/dotnet/standard/data/xml/script-blocks-using-msxsl-script)
+[XSLT Stylesheet Scripting Using <msxsl:script>](https://github.com/foxbot/dotnet-docs/blob/master/docs/standard/data/xml/xslt-stylesheet-scripting-using-msxsl-script.md)
