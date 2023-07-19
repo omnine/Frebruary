@@ -10,6 +10,7 @@ using System.Xml;
 using System.Data;
 using System.Security.Permissions;
 using System.Configuration;
+using Newtonsoft.Json.Linq;
 
 namespace Frebruary
 {
@@ -24,7 +25,8 @@ namespace Frebruary
         public List<Freb> source;
 
         string appPath;
-        string lastScannedFolder;
+        string lastScannedFolder = null;
+        JObject settings = null;
         public bool bUseWebView = true;    //use webview2 by default 
 
         public MainWindow()
@@ -33,19 +35,19 @@ namespace Frebruary
             InitializeComponent();
             appPath = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
             //read settings
-            lastScannedFolder = ConfigurationManager.AppSettings.Get("lastScannedFolder");
-            Console.WriteLine("The value of lastScannedFolder: " + lastScannedFolder);
+            string jsonpath = appPath + "\\settings.json";
+            if(File.Exists(jsonpath))
+            {
+                settings = JObject.Parse(File.ReadAllText(jsonpath));
+                lastScannedFolder = (string)settings["lastScannedFolder"];
+            }
+
+
             if (lastScannedFolder != null)
             {
                 locationTextBox.Text = lastScannedFolder;
             }
-            /*
-            string strUWV = ConfigurationManager.AppSettings.Get("useWebView");
-            if(strUWV != null)
-            {
-                bUseWebView = Convert.ToBoolean(strUWV);
-            }
-            */
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -81,17 +83,13 @@ namespace Frebruary
                 {
                     locationTextBox.Text = fbroswer.SelectedPath;
 
-                    Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                    if(settings == null)
+                    {
+                        settings = new JObject();
+                    }
+                    settings["lastScannedFolder"] = fbroswer.SelectedPath;
+                    File.WriteAllText(appPath + "\\settings.json", settings.ToString());
 
-                    if (lastScannedFolder != null)
-                    {
-                        configuration.AppSettings.Settings["lastScannedFolder"].Value = fbroswer.SelectedPath;
-                    }
-                    else
-                    {
-                        configuration.AppSettings.Settings.Add("lastScannedFolder", fbroswer.SelectedPath);
-                    }
-                    configuration.Save(ConfigurationSaveMode.Full, true);
                     lastScannedFolder = fbroswer.SelectedPath;
 
                 }
