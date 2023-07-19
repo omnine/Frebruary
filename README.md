@@ -2,15 +2,15 @@
 
 ## Introduction
 
-A simple Failed Request Tracing Viewer and Filtering Tool.
+A simple **Failed Request Tracing** Viewer and Filtering Tool.
 
-We used to use Internet Explorer to view IIS FREB logs, but it was retired on June 15, 2022.
+We used to use **Internet Explorer** to view IIS FREB logs, but it was retired on June 15, 2022.
 
-Unfortunately the successor, MS Edge, doesn't work in this case due to its security enhancement.
+Unfortunately the successor, **MS Edge**, doesn't work in this case due to its security enhancements.
 
-This project was forked from, I added WebView2 support.
+This project was forked from https://github.com/abhilashr1/Frebruary, I added **WebView2** support.
 
-For backward compatibility, The WebBrowser (Embedded IE Control) is kept.
+For backward compatibility, The **WebBrowser** (Embedded IE Control) is kept.
 
 ## The prerequisites
 
@@ -18,7 +18,7 @@ For backward compatibility, The WebBrowser (Embedded IE Control) is kept.
 
 ## How to use it?
 
-- Download and run the app;
+- Download and run the application;
 - Browser to the FREB log folder;
 - Scan the logs under that folder;
 - Choose one log in the list, then Preview it.
@@ -26,4 +26,5 @@ For backward compatibility, The WebBrowser (Embedded IE Control) is kept.
 ## References
 
 [Script Blocks Using msxsl:script](https://learn.microsoft.com/en-us/dotnet/standard/data/xml/script-blocks-using-msxsl-script)
+
 [XSLT Stylesheet Scripting Using <msxsl:script>](https://github.com/foxbot/dotnet-docs/blob/master/docs/standard/data/xml/xslt-stylesheet-scripting-using-msxsl-script.md)
