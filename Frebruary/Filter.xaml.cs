@@ -173,7 +173,7 @@ namespace Frebruary
             /* Update the Main Window Source */
             _parent.source = results;
             _parent.reload();
-            this.Hide();
+            this.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -184,7 +184,7 @@ namespace Frebruary
             }
             MessageBox.Show("Removing all applied filters");
             _parent.scanButton_Click(sender, e);
-            this.Hide();
+            this.Close();
         }
     }
 }

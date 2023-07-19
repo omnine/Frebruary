@@ -19,12 +19,12 @@ namespace Frebruary
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
             _parent.bUseWebView = (bool)radioWebView.IsChecked;
-            this.Hide();
+            this.Close();
         }
 
         private void Button_Click_Cancel(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
     }
 }
